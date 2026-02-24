@@ -226,7 +226,7 @@ class OutstandingOriginalCurrencyReportHandler(models.AbstractModel):
                     "id": move.id,
                     "invoice_date": move.invoice_date,
                     "invoice_date_due": move.invoice_date_due,
-                    "display_number": move.fp_consecutive_number or move.name,
+                    "display_number": move.l10n_cr_document_id or move.name,
                     "original_amount": original_amount,
                     "residual_amount": residual_amount,
                 }
