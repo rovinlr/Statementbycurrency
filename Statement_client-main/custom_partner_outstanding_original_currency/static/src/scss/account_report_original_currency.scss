@@ -1,0 +1,66 @@
+.o_account_reports_page .o_statement_original_currency_partner td {
+    font-size: 12px;
+    font-weight: 600;
+    padding-top: 10px;
+    border-top: 1px solid #c9ced6;
+}
+
+.o_account_reports_page .o_statement_original_currency_currency td {
+    font-weight: 600;
+    color: #34495e;
+    padding-top: 6px;
+}
+
+.o_account_reports_page .o_statement_original_currency_detail td {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #eef1f5;
+}
+
+.o_account_reports_page .o_statement_original_currency_subtotal td {
+    font-weight: 700;
+    border-top: 1px solid #aeb8c2;
+    padding-top: 6px;
+    padding-bottom: 8px;
+}
+
+
+.o_account_reports_page .o_account_reports_table th.o_account_report_line_header,
+.o_account_reports_page .o_account_reports_table td.o_account_report_line_name {
+    width: 24%;
+    max-width: 24%;
+}
+
+.o_account_reports_page .o_account_reports_table thead th {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: #1f2937;
+    opacity: 1;
+}
+
+.o_account_reports_page .o_account_reports_table thead tr:last-child th {
+    font-weight: 700;
+}
+
+.o_account_reports_page .o_account_reports_table td.number,
+.o_account_reports_page .o_account_reports_table th.number {
+    text-align: right;
+}
+
+.o_account_reports_page .o_statement_original_currency_detail .o_account_report_line_name,
+.o_account_reports_page .o_statement_original_currency_subtotal .o_account_report_line_name {
+    width: 1%;
+    white-space: nowrap;
+}
+
+@media print {
+    .o_account_reports_page .o_account_reports_table {
+        width: 100%;
+    }
+
+    .o_account_reports_page .o_statement_original_currency_detail td,
+    .o_account_reports_page .o_statement_original_currency_subtotal td {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+}

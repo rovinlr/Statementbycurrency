@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_report_estado_cuenta_por_cobrar_moneda_original_col_fecha" model="account.report.column">
+        <field name="name">Date</field>
+        <field name="expression_label">fecha</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="account_report_estado_cuenta_por_cobrar_moneda_original_col_fecha_vencimiento" model="account.report.column">
+        <field name="name">Due Date</field>
+        <field name="expression_label">fecha_vencimiento</field>
+        <field name="sequence">30</field>
+    </record>
+
+    <record id="account_report_estado_cuenta_por_cobrar_moneda_original_col_importe_original" model="account.report.column">
+        <field name="name">Original Amount</field>
+        <field name="expression_label">importe_original</field>
+        <field name="sequence">40</field>
+        <field name="figure_type">monetary</field>
+    </record>
+
+    <record id="account_report_estado_cuenta_por_cobrar_moneda_original_col_saldo" model="account.report.column">
+        <field name="name">Balance</field>
+        <field name="expression_label">saldo</field>
+        <field name="sequence">50</field>
+        <field name="figure_type">monetary</field>
+    </record>
+
+    <record id="account_report_estado_cuenta_por_cobrar_moneda_original" model="account.report">
+        <field name="name">Outstanding balance statement (Original currency)</field>
+        <field name="filter_date_range" eval="True"/>
+        <field name="filter_journals" eval="True"/>
+        <field name="filter_partner" eval="True"/>
+        <field name="filter_unfold_all" eval="True"/>
+        <field name="filter_multi_company">selector</field>
+        <field name="default_opening_date_filter">this_month</field>
+        <field name="load_more_limit" eval="80"/>
+        <field name="column_ids" eval="[(6, 0, [
+            ref('account_report_estado_cuenta_por_cobrar_moneda_original_col_fecha'),
+            ref('account_report_estado_cuenta_por_cobrar_moneda_original_col_fecha_vencimiento'),
+            ref('account_report_estado_cuenta_por_cobrar_moneda_original_col_importe_original'),
+            ref('account_report_estado_cuenta_por_cobrar_moneda_original_col_saldo')
+        ])]"/>
+        <field name="custom_handler_model_id" ref="model_account_outstanding_original_currency_report_handler"/>
+    </record>
+
+
+
+    <record id="account_report_estado_cuenta_por_cobrar_moneda_original_line_base" model="account.report.line">
+        <field name="name">Outstanding balance statement (Original currency)</field>
+        <field name="report_id" ref="account_report_estado_cuenta_por_cobrar_moneda_original"/>
+        <field name="groupby">partner_id,id</field>
+    </record>
+
+    <record id="action_account_report_estado_cuenta_por_cobrar_moneda_original" model="ir.actions.client">
+        <field name="name">Outstanding balance statement (Original currency)</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'report_id': ref('account_report_estado_cuenta_por_cobrar_moneda_original')}"/>
+    </record>
+
+    <menuitem
+        id="menu_account_report_estado_cuenta_por_cobrar_moneda_original"
+        name="Outstanding balance statement (Original currency)"
+        parent="account.menu_finance_reports"
+        action="action_account_report_estado_cuenta_por_cobrar_moneda_original"
+        sequence="95"
+        groups="account.group_account_readonly"
+    />
+</odoo>
