@@ -20,7 +20,7 @@ class StatementSendWizard(models.TransientModel):
             targets = partner._get_statement_target_emails()
             values.setdefault("email_to", targets["email_to"])
             values.setdefault("email_cc", targets["email_cc"])
-            values.setdefault("subject", _("Estado de cuenta - %(partner)s") % {"partner": partner.name})
+            values.setdefault("subject", _("Statement - %(partner)s") % {"partner": partner.name})
             values.setdefault(
                 "body",
                 _(
